@@ -1,5 +1,5 @@
 # simple-api-pi-tft-avatar
-A silly project written in c++, on raspberry pi, tft display
+A silly project written in c++. Raspberry pi & tft display
 
 Docs:
 https://howchoo.com/pi/raspberry-pi-touchscreen-setup/ => setup tft 7"
