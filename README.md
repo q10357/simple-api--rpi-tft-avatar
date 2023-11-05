@@ -1,6 +1,8 @@
 # simple-api-pi-tft-avatar
 A silly project written in c++. Raspberry pi & tft display
 
+//TEST
+
 Docs:
 https://howchoo.com/pi/raspberry-pi-touchscreen-setup/ => setup tft 7"
 # C++17 required for Pistache!
