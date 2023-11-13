@@ -1,23 +1,27 @@
-#include "pistache_headers.h"
+#include <pistache/endpoint.h>
+#include <pistache/router.h>
+#include <pistache/http.h>
 #include "greet.h"
 
-#include "rapidjson/document.h"
+void configureRouter(Pistache::Rest::Router& router) {
+    Pistache::Rest::Routes::Get(router, "/greet", Pistache::Rest::Routes::bind(&greet));
+    // Add more route configurations as needed
+}
 
-int main(int argc, char* argv[]) 
-{
-    using namespace Rest;
+int main() {
+    const int portNumber = 3000;
 
-    Router router;
-    Port port(3000);
-    Address addr(Ipv4::any(), port);
-    std::shared_ptr<Http::Endpoint> endpoint = std::make_shared<Http::Endpoint>(addr);
-    auto opts = Http::Endpoint::options().threads(1);
+    Pistache::Address addr(Pistache::Ipv4::any(), Pistache::Port(portNumber));
+    auto endpoint = std::make_shared<Pistache::Http::Endpoint>(addr);
+
+    auto opts = Pistache::Http::Endpoint::options().threads(1);
     endpoint->init(opts);
 
-    /* Routes */
-    Routes::Get(router, "/greet", Routes::bind(&greet)); 
-    
-    endpoint->setHandler(router.handler());
-    endpoint->serve(); // start server
+    Pistache::Rest::Router router;
+    configureRouter(router);
 
+    endpoint->setHandler(router.handler());
+    endpoint->serve();
+
+    return 0;
 }

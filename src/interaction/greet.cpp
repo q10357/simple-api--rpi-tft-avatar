@@ -1,18 +1,25 @@
 #include "greet.h"
-#include "pistache_headers.h"
 
-void setSimpleHiGreeting(std::string* strPtr);
+void simpleHiGreeting(std::string* strPtr);
 
-void greet(const Rest::Request& request, Http::ResponseWriter response)
+
+void greet(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response)
 {
     std::string greeting;
-    setSimpleHiGreeting(&greeting);
-    response.send(Http::Code::Ok, greeting);
+    simpleHiGreeting(&greeting);
+    response.send(Pistache::Http::Code::Ok, greeting);
 }
 
-void setSimpleHiGreeting(std::string* strPtr)
+
+
+void simpleHiGreeting(std::string* strPtr)
 {
     if(strPtr) {
         *strPtr = "Hi! ^_^";
     }
+}
+
+void daytimeGreeting()
+{
+
 }
