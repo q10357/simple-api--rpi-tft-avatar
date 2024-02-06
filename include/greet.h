@@ -5,6 +5,8 @@
 
 #include "pistache_headers.h"
 
-void greet(const Pistache::Rest::Request& request, Pistache::Http::ResponseWriter response);
+using namespace Pistache; 
+
+void greet(const Rest::Request& request, Http::ResponseWriter response);
 
 #endif

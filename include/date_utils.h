@@ -6,8 +6,7 @@
 #include <iostream>
 #include <chrono>
 
-std::chrono::system_clock::time_point getCurrentDateTime() {
-    return std::chrono::system_clock::now();
-}
+
+std::chrono::system_clock::time_point getCurrentDateTime();
 
 #endif
